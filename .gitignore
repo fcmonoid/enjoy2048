@@ -23,3 +23,5 @@ hs_err_pid*
 /bin/
 /.classpath
 /.project
+/enjoy2048.iml
+/.idea
