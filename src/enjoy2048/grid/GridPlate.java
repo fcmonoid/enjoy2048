@@ -49,8 +49,8 @@ public class GridPlate {
 	}
 	
 	void setWin(Number doubledNumber) {
-		//if (doubledNumber == Number.N2048)
-		if (doubledNumber.getValue() > Number.N16.getValue())
+		if (doubledNumber.getValue() > Number.N1024.getValue())
+		// if (doubledNumber.getValue() > Number.N16.getValue())
 			win = true;
 		else
 			win = false;
