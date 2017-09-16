@@ -51,6 +51,7 @@ public enum Index {
 		return indexMap.get(x).get(y);
 	}
 
+	// these don't include dummy indices (like I44, I_1_1)
 	public static Iterable<Index> rowFromLeftToRight(int y, int max) {
 		return new Iterable<Index>(){
 			@Override

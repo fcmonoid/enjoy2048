@@ -7,8 +7,6 @@ import enjoy2048.Index;
 import enjoy2048.Number;
 
 public class GridPlate {
-	/// package도 나누자
-
 	static final int MAX = 4;
 	private static GridPlate theGridPlate = null;
 	
@@ -45,7 +43,6 @@ public class GridPlate {
 	
 	public String getScoreStr() {
 		return Long.toString(score);
-
 	}
 	
 	void setWin(Number doubledNumber) {
@@ -119,7 +116,6 @@ public class GridPlate {
 		
 	}
 
-	
 
 	////////////////////////// control ///////////////////////////////
 
@@ -163,8 +159,6 @@ public class GridPlate {
 		}
 	}
 
-	
-
 	public int randomFilling(int nTimes) {
 		List<Index> empties = gridData.collectEmpties();
 		int numOfEmpties = empties.size();
@@ -181,7 +175,7 @@ public class GridPlate {
 		return numOfRandoms;
 	}
 
-	public int getvalue(Index index) {
+	public int getValue(Index index) {
 		
 		return gridData.get(index).getValue();
 	}

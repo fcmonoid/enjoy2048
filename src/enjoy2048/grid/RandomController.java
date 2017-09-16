@@ -27,18 +27,6 @@ class RandomController {
 		gridData.put(indexToBeFilled, number);
 
 		return indexToBeFilled;
-		/*
-		Random rand = new Random();
-		int posToBeFilled = rand.nextInt(candidates.size());
-		Index indexToBeFilled = candidates.get(posToBeFilled); // 9.13 이걸 좀
-																// 미리 찾아놓고
-																// merge 하고
-																// 나서 put하면
-																// 될 것 같다.
-		gridData.put(indexToBeFilled, Number.N2);
-
-		return indexToBeFilled;
-		*/
 	}
 
 	Index randomFilling(GridData gridData, List<Index> empties) {

@@ -3,35 +3,29 @@ package enjoy2048;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 
 import enjoy2048.grid.GridPlate;
 
-public class Game {
-	// View
-	// refactoring 꺼리 많다
-	GridPlate gridPlate;
-	JFrame frame = null;
-	JPanel panel = null;
+class Game {
+	private GridPlate gridPlate;
+	private JFrame frame = null;
+	private JPanel panel = null;
 
-	Game(GridPlate gridPlate) {
+	private Game(GridPlate gridPlate) {
 		this.gridPlate = gridPlate;
 		initialize();
 	}
 	
 ///////////////// listening /////////////////////
-	public void initialize() {
+	private void initialize() {
 		frame = new JFrame();
 		panel = new JPanel();
 		frame.setLayout(new GridBagLayout());
 		frame.add(panel, new GridBagConstraints());
 		frame.setSize(800, 800);
 		frame.setLocationRelativeTo(null);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 		frame.addKeyListener(new KeyListener() {
 			@Override
@@ -55,18 +49,17 @@ public class Game {
 						}
 					
 					gridPlate.randomFilling(1);
-					
+					show();
+
 					if (gridPlate.isFail()) {
 						JOptionPane.showMessageDialog(frame, "Finish!");
 						frame.dispose();
 					}
-					else 
-						show();
 				}
 			}
 
 			@Override
-			public void keyReleased(KeyEvent e) { //코드는 이쪽으로?
+			public void keyReleased(KeyEvent e) {
 			}
 
 			@Override
@@ -78,11 +71,11 @@ public class Game {
 	}
 	
 	///////////////// diaplay /////////////////////
-	static Font fontPlain = new Font("Verdana", Font.PLAIN, 20);
-	static Font fontMerge = new Font("Verdana", Font.BOLD, 20);
-	static Font fontRandom = new Font("Verdana", Font.BOLD, 20);
-	static Font fontScoreTitle = new Font(Font.SANS_SERIF, Font.BOLD, 17);
-	static Font fontScore = new Font(Font.SANS_SERIF, Font.BOLD, 17);
+	private static final Font fontPlain = new Font("Verdana", Font.PLAIN, 20);
+	private static final Font fontMerge = new Font("Verdana", Font.BOLD, 20);
+	private static final Font fontRandom = new Font("Verdana", Font.BOLD, 20);
+	private static final Font fontScoreTitle = new Font(Font.SANS_SERIF, Font.BOLD, 17);
+	private static final Font fontScore = new Font(Font.SANS_SERIF, Font.BOLD, 17);
 	
 	private void prepareNewGrid(){
 		frame.setVisible(false);
@@ -93,7 +86,7 @@ public class Game {
 	
 
 	private void setColor(JLabel numLabel, Index index) {
-        int x = gridPlate.getvalue(index);
+        int x = gridPlate.getValue(index);
 		switch (x) {
 			case 0:
 				numLabel.setBackground(Color.WHITE);
@@ -160,7 +153,7 @@ public class Game {
 	
 	private void displayGrids(){
 		prepareNewGrid();
-		Index.allIndex(4).forEach(x->displayNumber(x));
+		Index.allIndex(4).forEach(this::displayNumber);
 		gridPlate.clearDataforNext();
 	}
 	
@@ -189,7 +182,7 @@ public class Game {
 	private void showWinMessage() {
 		JOptionPane.showMessageDialog(frame, "You Win!");
 		// TODO: "Do more? yes and no ...." 9.13
-		// ncube.clearWin(); else
+		// gridPlate.clearWin(); else
 		frame.dispose();
 	}
 
@@ -201,7 +194,7 @@ public class Game {
 			showWinMessage();		
 	}
 
-	public static Game getGame(GridPlate c) {
+	static Game getGame(GridPlate c) {
 		return new Game(c);
 	}
 

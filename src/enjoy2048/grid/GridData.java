@@ -58,13 +58,7 @@ class GridData {
 
 	
 	////////////////////////// check ////////////////////////////////
-	boolean noMorePossibleMovesbak() {
-		// empty는 안남아도 merge가 가능한 경우도 있는데... 그걸 처리해야함 2017/9/11
-		return true;
-	}
-	//// 여기부터 시작
 	boolean possibleMovesExist() {
-		// empty는 안남아도 merge가 가능한 경우도 있음
 		for (int x=0; x < GridPlate.MAX; x++)
 			if (isMergableRowOrCol(Index.colFromBottomToTop(x, GridPlate.MAX)))
 				return true;
@@ -88,8 +82,6 @@ class GridData {
 		}
 		return false;
 	}
-/// 여기까지 가짜
-	
 
 	/*
 	boolean randomFillingAndEvaluation() {
