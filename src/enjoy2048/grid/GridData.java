@@ -33,7 +33,7 @@ class GridData {
 		return matrix.get(index);
 	}
 
-	Iterable<Index> getAllIndex(){
+	private Iterable<Index> getAllIndex(){
 		return matrix.keySet();
 	}
 	void put(Index index, Number newNumber) {

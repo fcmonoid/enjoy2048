@@ -10,7 +10,6 @@ class RandomController {
 	
 	RandomController() { }
 
-
 	private Index dropRandom(GridData gridData, List<Index> candidates) {
 		Random random4index = new Random();
 		int posToBeFilled = random4index.nextInt(candidates.size());
@@ -30,8 +29,8 @@ class RandomController {
 	}
 
 	Index randomFilling(GridData gridData, List<Index> empties) {
-			Index indexRandomFilled = dropRandom(gridData, empties);
-			return indexRandomFilled;
+			// this method and dropRandom() returns the index filled with the random value
+			return dropRandom(gridData, empties);
 	}
 	
 	

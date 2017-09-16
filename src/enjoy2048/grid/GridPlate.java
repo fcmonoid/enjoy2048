@@ -8,7 +8,7 @@ import enjoy2048.Number;
 
 public class GridPlate {
 	static final int MAX = 4;
-	private static GridPlate theGridPlate = null;
+	private static GridPlate theGridPlate = new GridPlate();
 	
 	private boolean win = false;
 	private long score = 0;
@@ -18,12 +18,11 @@ public class GridPlate {
 	private List<Index> randomList = new ArrayList<>();
 	
 	public static GridPlate getPlate() {
-		theGridPlate = new GridPlate();
 		theGridPlate.initialize();
 		return theGridPlate;
 	}
 
-	GridPlate() {
+	private GridPlate() {
 		gridData = new GridData(this);
 		randomController = new RandomController();
 	}
@@ -46,7 +45,7 @@ public class GridPlate {
 	}
 	
 	void setWin(Number doubledNumber) {
-		if (doubledNumber.getValue() > Number.N1024.getValue())
+		if (doubledNumber.is2048())
 		// if (doubledNumber.getValue() > Number.N16.getValue())
 			win = true;
 		else

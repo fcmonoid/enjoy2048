@@ -25,7 +25,8 @@ public enum Number {
 		if (this == Empty) return ".";
 		return Integer.toString(value);
 	}
-	
+
+	public boolean is2048() { return value >= 2048;}
 	public static Number toNumber(int i){
 		return numberMap.get(i);
 	}

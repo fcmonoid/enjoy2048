@@ -3,7 +3,7 @@ package enjoy2048;
 import enjoy2048.grid.GridPlate;
 
 public class Play {
-	static void play(){
+	private static void play(){
 		GridPlate c = GridPlate.getPlate();
 		Game g = Game.getGame(c);
 		g.show();	
